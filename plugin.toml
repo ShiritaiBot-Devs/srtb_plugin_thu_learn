@@ -1,0 +1,39 @@
+api = 1
+name = "网络学堂 · OneLearn"
+description = "通过 stdio JSON 请求接入学校适配端；附带清华适配进程。"
+
+[settings_schema]
+type = "object"
+
+[settings_schema.properties.command]
+type = "array"
+title = "启动命令"
+description = "每行一个参数；留空则使用当前 Python 解释器运行插件自带的 bridge.py。"
+default = []
+
+[settings_schema.properties.command.items]
+type = "string"
+
+[settings_schema.properties.username]
+type = "string"
+title = "学号"
+default = ""
+
+[settings_schema.properties.password]
+type = "string"
+title = "密码"
+description = "保存后自动加密，登录时由插件读取。"
+writeOnly = true
+default = ""
+
+[settings_schema.properties.poll]
+type = "boolean"
+title = "自动检查作业变化"
+default = false
+
+[settings_schema.properties.poll_seconds]
+type = "integer"
+title = "轮询间隔（秒）"
+description = "首次同步只建立基线，后续同步产生作业变化事件。"
+minimum = 300
+default = 900
